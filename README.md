@@ -14,6 +14,7 @@ The original plan was to build out my own DCC controller utilizing the industry 
 This project is simple yet so much more robust than the original as I've learned more along the way ( and it works ).  I continued in the same spirit of learning, this project continues to buiild on the technology I currently utilize at work.  No better way to learn than to practice; and practice with something you enjoy :)
 
 ## TODO's - so many TODO's
+* fix that admin ui -- oof
 * link all the resources used for the project
 * get the build process working for distribution
 * structure the project and let the build do the work
@@ -23,26 +24,29 @@ This project is simple yet so much more robust than the original as I've learned
 * continue to build out the DCC API to connect to other DCC Controllers ( originally utilized DCC++ Ex )
 
 
-## How It Works
-It's a node server running on the Raspberry Pi with a Websocket server that communicates to the web app and the DCC controller running on the Arduino.  The Arduino uses the Motorshield to send the signals on the bus wires.  A programming line on Terminals B, and the main operating signals on terminals A.
+## Overview - How It Works
+It's a node server running on the Raspberry Pi with a Websocket server that communicates to the all web app clients and the DCC controller running on the Arduino.  The Arduino uses the Motorshield to send the signals on the bus wires.  A programming line on Terminals B, and the main operating signals on terminals A.
 
 ## Get Started
 Go check out the DCC++ EX website.  Yes really.  They will get you up and running with a shopping list and the code and the support...but if you want a more do it yourself approach and don't care for jquery then here is how to use my code.
 
-* Purchase / Accuire the hardware listed below.
+Also I am starting from a place of understanding that assumes you have an understanding of code and are technologically savvy.  For instance you have the ability to load code onto an Arduino, Raspberry Pi or have the interest and wish to investigate such things :)
+
+* Purchase / Accuire the hardware listed below and as listed in DCC++ EX as we are using their code
 * On the motor shield remove or bend the aux power pin out of the way - Seriously
-* Strongly suggest looking at DCC++ EX website or YouTube for instructions on this
+* * Strongly suggest looking at DCC++ EX website or YouTube for instructions on this
 * * Ensure it will not connect with the Arduino or you will redundantly power the Arduino and destroy it
 * Connect the motorshield to the Arduino - no need to power it yet
 * Install DCC++ EX on the Arduino
-* Pass it some commands and observe the serial monitor for the outputs
-* * `<1>` will power it up so that's a good command to start with
+* Pass it some commands using the serial monitor and observe the response
+* * `<1>` will power the track and programming track
 * * `<s>` returns the status and version info of DCC++ EX
 * looks good to me - ready to connect it to the train track
 * wire motor shield terminals A to the main track
 * wire motor shield terminals B to the programming track
 * It is your responsibility to know what you are doing and to avoid short circuits with frogs, turnouts 
 * It is your responsibility to ensure you keep the pos+ wire on it's side of the track and the neg- wire on it's side of the track
+* send the `<0>` command to turn of track power
 * wire the powersupply to the motorshield
 
 
@@ -67,18 +71,39 @@ Go check out the DCC++ EX website.  Yes really.  They will get you up and runnin
 
 
 ## Linux / Raspberry Pi on a network
-I run my setup from the pi and connect to it using my phone browser  train/
+I run my setup from the pi and connect to it using my phone browser  train/.  I have the repo on a Windows machine and the operating code on the Pi.  So my Pi is connected to the Arduino and communicates via USB cable.
+
 * rename the pi - you could skip this but i have several pi's running on my network
 * *  `sudo nano /etc/hostname`
 * * delete all contents and replace with train
 * * `sudo nano /etc/hosts`
-* * look for the original pi name and 127.0.01 and replace the name with train
+* * look for the last address  127.0.1.1 and original pi name and and replace the name with train
 * add user to the dialout group - allows the pi to connect to the Arduino via USB
 * * `sudo adduser yourusername dialout`
 * adjust the app files to match the name of your pi - orginal code points to localhost
 * * www/train-comm.js
 
+## File Configurations
+As stated in the TODO's the configurations for locomotives is nested in the files.  To run your locomotive configure the files for you're loco id.  While you are there change the colors of the loco to match you're paint ( as best as possible ).
 
+* www/server-websocket-api.js
+* * apiModel.trains.dccId
+
+## Operations
+Administration controls and Engineer controls are currently available to the users.  Ideas for turnout controls and sleeper track operators are already in mind...maybe a Dispatch Operator in the future could control when or where the locomotive is able to travel.
+
+### Operations - Administrator
+You are in control of the layout.  You must turn on the track power for Engineers to be able to operate.  You also have the E-Stop reset and the ability to send commmends directly to the DCC controller
+
+* navigate to your hosted application /train-admin
+* review DCC++ Ex commands and have fun
+
+### Operations - Engineer
+* navigate to your host /train
+* select a locomotive to start interacting with the controls
+* if you see an emergency on the tracks you can press the E-Stop
+* * BUT you will need the admin to reset it for you
+* * ALL locomotives on the layout are brought to a stop
 
 ## Hardware Used
 * Raspberry Pi
