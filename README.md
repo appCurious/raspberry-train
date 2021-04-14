@@ -48,6 +48,7 @@ Also I am starting from a place of understanding that assumes you have an unders
 * It is your responsibility to ensure you keep the pos+ wire on it's side of the track and the neg- wire on it's side of the track
 * send the `<0>` command to turn of track power
 * wire the powersupply to the motorshield
+* close the serial monitor when you are ready to use the server and web controls
 
 
 ## Windows / Linux using local host
@@ -68,8 +69,6 @@ Also I am starting from a place of understanding that assumes you have an unders
 * open a browser to localhost:whateverport the console log gave
 
 
-
-
 ## Linux / Raspberry Pi on a network
 I run my setup from the pi and connect to it using my phone browser  train/.  I have the repo on a Windows machine and the operating code on the Pi.  So my Pi is connected to the Arduino and communicates via USB cable.
 
@@ -82,12 +81,25 @@ I run my setup from the pi and connect to it using my phone browser  train/.  I 
 * * `sudo adduser yourusername dialout`
 * adjust the app files to match the name of your pi - orginal code points to localhost
 * * www/train-comm.js
+* * * _socketAddress
 
 ## File Configurations
-As stated in the TODO's the configurations for locomotives is nested in the files.  To run your locomotive configure the files for you're loco id.  While you are there change the colors of the loco to match you're paint ( as best as possible ).
+As stated in the TODO's the configurations are nested in the files.  Update the configs as needed.
 
-* www/server-websocket-api.js
+### locomotive configurations
+To run your locomotive configure the files for you're loco id.  While you are there change the colors of the loco to match you're paint ( as best as possible ).
+* server-websocket-api.js
 * * apiModel.trains.dccId
+
+### communication ports - usb port connected to Arduino
+You may need to adjust the Comm Ports USB names to match your system.
+* server-dcc-comm.js
+* * osPorts
+
+### web socket address
+If you changed the host name and are NOT running from localhost.
+* www/train-comm.js
+* * _socketAddress
 
 ## Operations
 Administration controls and Engineer controls are currently available to the users.  Ideas for turnout controls and sleeper track operators are already in mind...maybe a Dispatch Operator in the future could control when or where the locomotive is able to travel.
