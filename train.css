@@ -1,0 +1,211 @@
+
+#raspberry-train-wrapper {
+  margin: auto;
+  /* width: 800px; */
+  min-width: 300px;
+  max-width: 800px;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+#raspberry-train-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-self: center;
+}
+
+@media only screen and (max-width: 600px) {
+  #raspberry-train-container {
+    grid-template-columns: 1fr;
+  }
+
+  #raspberry-train-controls .train-control-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: self-end;
+  }
+}
+
+#raspberry-train-controls {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-self: self-start;
+  margin: 20px;
+}
+
+#raspberry-train-controls .train-control-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: self-end;
+}
+
+#raspberry-train-controls .train-control-group--control-speed {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: self-end;
+}
+
+#raspberry-train-controls .train-control {
+  display: grid;
+  margin-bottom: 20px;
+}
+
+#raspberry-train-controls .train-control .control-text {
+  justify-self: center;
+  margin: 5px;
+}
+
+#raspberry-train-controls .button-container .button-normal {
+  background-color:#ffe4c4;;
+  color: #000000;
+}
+
+#raspberry-train-controls .button-container .icon {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#raspberry-train-controls .button-container .icon.park-train {
+  background-image: url('Plain_TrainStation.svg');
+}
+
+#raspberry-train-controls .button-container .icon.direction-forward {
+  background-image: url('Plain_Direction.svg');
+
+}
+
+#raspberry-train-controls .button-container .icon.direction-reverse {
+  background-image: url('Plain_Reverse_Direction.svg');
+
+}
+#raspberry-train-controls .button-container .emergency-control-container {
+  display: grid;
+  justify-self: center;
+  color: white;
+  background-color: #ff0000;
+  border: solid 1px #000000;
+  border-radius: 7px;
+}
+#raspberry-train-controls .button-container .button-emergency {
+  background-color: #ff0000;
+  color: #ffffff;
+  border: none;
+
+}
+#raspberry-train-controls .button-container .icon.button-emergency {
+  background-image: url(Plain_Estop.svg);
+}
+
+#raspberry-train-controls .button-container .button-image {
+  width: 100%;
+  cursor: pointer;
+}
+
+#raspberry-train-controls button  {
+  justify-self: center;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+
+  font-size: 12px;
+  border-radius: 7px;
+  height: 100px;
+  width: 100px;
+}
+#raspberry-train-controls button.disabled {
+  cursor: default;
+  opacity: 0.3;
+}
+
+#raspberry-train-controls .speed-selection-container {
+  display: grid;
+  width: 100%;
+
+}
+
+#raspberry-train-controls .speed-selection-container .speed-selector {
+  justify-self: center;
+  width: 90%;
+  cursor: pointer;
+}
+#raspberry-train-controls .speed-selection-container .speed-selector.disabled {
+  cursor: default;
+}
+
+/* column 2 */
+#raspberry-train-selection {
+  margin: 20px;
+}
+
+#raspberry-train-selection .select-container {
+  display: grid;
+  width: 100%;
+}
+
+#raspberry-train-selection .select-container .select-train {
+  display: grid;
+  justify-self: self-end;
+  border: solid 1px #000000;
+  border-radius: 7px;
+  width: 100%;
+
+  margin-bottom: 20px;
+  /* transition: height .3s; */
+}
+#raspberry-train-selection .select-container .select-train.expanded {
+  height: auto;
+  /* transition: height .3s; */
+}
+
+#raspberry-train-selection .select-container .select-train .select-train-options-container {
+  display: grid;
+  height: 20px;
+  transition: height .3s;
+}
+#raspberry-train-selection .select-container .select-train:not(.expanded) .select-train-options-container {
+  background-color: #008000;
+  color: #ffffff;
+}
+
+#raspberry-train-selection .select-container .select-train-option.default {
+  grid-template-columns: 1fr;
+  justify-self: center;
+  height: 20px;
+  cursor: pointer;
+}
+#raspberry-train-selection .select-container .select-train-option.selected {
+  grid-template-columns: 1fr;
+  justify-self: center;
+  height: 20px;
+  cursor: default;
+}
+
+#raspberry-train-selection .select-container .select-train-option {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-self: self-end;
+  height: 50px;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+}
+
+#raspberry-train-selection .select-container .select-train-option .control-text {
+  align-self: center;
+  text-align: center;
+}
+
+#raspberry-train-selection .select-container .select-train-option .select-train-icon {
+  width: 100%;
+}
+
+#raspberry-train-selection #train-container {
+  width: 100%;
+  justify-self: center;
+  
+}
+#raspberry-train-selection #train-container #train-container--train {
+  width: 100%;
+}

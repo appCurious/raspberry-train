@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>train Admin</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" 
+      type="image/png" 
+      href="favicon.png">
+	<link rel="stylesheet" href="train.css">
+
+	<script type="module" >
+		import {default as train} from './train-admin.js';
+		window.raspberryTrain = train;
+		raspberryTrain.train = raspberryTrain.init({
+			elementSelector: 'train-app'
+		});
+	</script>
+</head>
+<body>
+  Train Control Admin
+	
+</body>
+</html>
