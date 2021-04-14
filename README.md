@@ -2,7 +2,7 @@
 Provides a web interface to controll a DCC model locomotive.  The beautiful ability to allow others to utilize whatever web connectable device they desire without limitation to brand, operating system or imposed technological restriction...well other than the need for a web browser.
 
 ## Thank You's
-
+Special thanks to the DCC++ EX team for helping me troubleshoot and get running.
 
 ## Project History
 Before I get into my story a little clarification on the technology in use.  DCC++ Ex is the C++ code running on the controller.  It's a project that picked up and rebuilt the DCC++ repository and is now fully supported as DCC++ Extended (https://github.com/DCC-EX)
@@ -21,6 +21,10 @@ This project is simple yet so much more robust than the original as I've learned
 * rename some things...cause naming is hard - ( 2 things are difficult in coding:  Caching, Naming and Indexing )
 * accessibility - learned some things that would be good to add in - like don't take health for granted and help others along the way
 * continue to build out the DCC API to connect to other DCC Controllers ( originally utilized DCC++ Ex )
+
+
+## How It Works
+It's a node server running on the Raspberry Pi with a Websocket server that communicates to the web app and the DCC controller running on the Arduino.  The Arduino uses the Motorshield to send the signals on the bus wires.  A programming line on Terminals B, and the main operating signals on terminals A.
 
 ## Get Started
 Go check out the DCC++ EX website.  Yes really.  They will get you up and running with a shopping list and the code and the support...but if you want a more do it yourself approach and don't care for jquery then here is how to use my code.
@@ -62,21 +66,17 @@ Go check out the DCC++ EX website.  Yes really.  They will get you up and runnin
 
 
 
-# Linux / Raspberry Pi on a network
+## Linux / Raspberry Pi on a network
 I run my setup from the pi and connect to it using my phone browser  train/
 * rename the pi - you could skip this but i have several pi's running on my network
 * *  `sudo nano /etc/hostname`
 * * delete all contents and replace with train
-* * `sudo nano /etc/hosts
+* * `sudo nano /etc/hosts`
 * * look for the original pi name and 127.0.01 and replace the name with train
 * add user to the dialout group - allows the pi to connect to the Arduino via USB
 * * `sudo adduser yourusername dialout`
 * adjust the app files to match the name of your pi - orginal code points to localhost
 * * www/train-comm.js
-
-
-
-
 
 
 
@@ -88,10 +88,8 @@ I run my setup from the pi and connect to it using my phone browser  train/
 * 12awg solid wire for the main bus lines 
 * 18awg solid wire for the feeders
 
-# How It Works
-It's a node server running on the Raspberry Pi with a Websocket server that communicates to the web app and the DCC controller running on the Arduino.  The Arduino uses the Motorshield to send the signals on the bus wires.  A programming line on Terminals B, and the main operating signals on terminals A.
 
-# Resources
+## Resources
 * Train Board Forum DCC++ EX (https://www.trainboard.com/highball/index.php?forums/dcc.177/)
 * DCC++ EX Repo (https://github.com/DCC-EX)
 * DCC++ EX website (https://dcc-ex.com/index.html)
