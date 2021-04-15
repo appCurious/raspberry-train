@@ -7,7 +7,7 @@ Special thanks to the DCC++ EX team for helping me troubleshoot and get running.
 ## Project History
 Before I get into my story a little clarification on the technology in use.  DCC++ Ex is the C++ code running on the controller.  It's a project that picked up and rebuilt the DCC++ repository and is now fully supported as DCC++ Extended (https://github.com/DCC-EX)
 
-My project started in 2014.  Originally developed using Java with Groovy and Grails, it was a way to continue to utilize and learn the technology weilded by the company I worked for.  I was successful at serving the application in Tomcat on a raspberry pi with the ability to turn on and off an led using a wireless device connected to the server.  That was so far from the desired outcome but a great start.  Life happens, time goes by, and now was a the time to pick the project up and continue toward success.  With a bit of research and some guidance from the DCC++ Ex team I have a good start and can control a locomotive on my H.O. scaled railroad.
+My project started in 2014.  Originally developed using Java with Groovy and Grails, it was a way to continue to utilize and learn the technology weilded by the company I worked for.  I was successful at serving the application in Tomcat on a raspberry pi with the ability to turn on and off an led using a wireless device connected to the server.  That was so far from the desired outcome but a great start.  Life happens, time goes by, and now wasthe time to pick the project up and continue toward success.  With a bit of research and some guidance from the DCC++ Ex team I have a good start and can control a locomotive on my H.O. scaled railroad.
 
 The original plan was to build out my own DCC controller utilizing the industry standard for pulse width modulation and commands.  I still have an interest in doing that.  While researching those standards, I started researching the hardware that could be used.  I came across a number of YouTube videos and DCC++.  It could be imported straight into the Arduino all ready to go and so that's what I did.  Off to a running start.
 
@@ -22,13 +22,14 @@ This project is simple yet so much more robust than the original as I've learned
 * rename some things...cause naming is hard - ( 2 things are difficult in coding:  Caching, Naming and Indexing )
 * accessibility - learned some things that would be good to add in - like don't take health for granted and help others along the way
 * continue to build out the DCC API to connect to other DCC Controllers ( originally utilized DCC++ Ex )
+* add in locomotive function support - sounds, etc.
 
 
 ## Overview - How It Works
 It's a node server running on the Raspberry Pi with a Websocket server that communicates to the all web app clients and the DCC controller running on the Arduino.  The Arduino uses the Motorshield to send the signals on the bus wires.  A programming line on Terminals B, and the main operating signals on terminals A.
 
 ## Get Started
-Go check out the DCC++ EX website.  Yes really.  They will get you up and running with a shopping list and the code and the support...but if you want a more do it yourself approach and don't care for jquery then here is how to use my code.
+Go check out the DCC++ EX website.  Yes really.  (https://dcc-ex.com/index.html) They will get you up and running with a shopping list and the code and the support...but if you want a different front end this one works to run a loco...not much else at the moment.
 
 Also I am starting from a place of understanding that assumes you have an understanding of code and are technologically savvy.  For instance you have the ability to load code onto an Arduino, Raspberry Pi or have the interest and wish to investigate such things :)
 
