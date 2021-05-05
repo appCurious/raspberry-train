@@ -5,18 +5,22 @@
   "main": "server.cjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "rollup --config rollup.config.js"
   },
   "author": "greg clark",
   "license": "ISC",
+  "private": true,
   "dependencies": {
     "express": "^4.17.1",
-    "onoff": "^6.0.1",
     "serialport": "^9.0.6",
     "snabby": "^1.2.0",
     "ws": "^7.4.2"
   },
   "devDependencies": {
-    "rollup": "^2.45.2"
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "glob": "^7.1.6",
+    "rollup": "^2.45.2",
+    "rollup-plugin-copy": "^3.4.0"
   }
 }

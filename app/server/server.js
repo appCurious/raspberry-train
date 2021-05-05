@@ -7,7 +7,7 @@ const api = require('./server-api.js');
 const websocketApi = require('./server-websocket-api.js');
 
 let app = express();
-
+websocketApi.init({});
 
 const rootPath = __dirname + '/www';
 
