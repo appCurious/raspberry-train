@@ -23,6 +23,7 @@ This project is simple yet so much more robust than the original as I've learned
 * accessibility - learned some things that would be good to add in - like don't take health for granted and help others along the way
 * continue to build out the DCC API to connect to other DCC Controllers ( originally utilized DCC++ Ex )
 * add in locomotive function support - sounds, etc.
+* use a db to store configurations for locos
 
 
 ## Overview - How It Works
@@ -56,16 +57,17 @@ Also I am starting from a place of understanding that assumes you have an unders
 * As is this code will run local host on Windows or Linux
 * install the dependencies
 * * `npm install`
-* - see the TODO above...yes the next steps are manual right now
-* create a directory named www
-* copy all files that start with train to www 
-* copy all svg files to www
-* copy lib to www
-* inside www directory
-* * npm init if you have not done these steps before - we need 1 library
-* * `npm install --save snabby`
-* in the main directory
-* * `node server`
+* run the build
+* * `npm run build`
+* dist/ directory is expected to be created
+* along with dist/app
+* install production dependencies from the dist/ directory
+* * `npm run install-prod`
+* - see the notes below if you have changed your web host name or the ports you allow
+* run the server (windows)
+* * `npm run start`
+* run the server (linux)
+* * `npm run start-linux`
 * looks good to me
 * open a browser to localhost:whateverport the console log gave
 
@@ -81,7 +83,7 @@ I run my setup from the pi and connect to it using my phone browser  train/.  I 
 * add user to the dialout group - allows the pi to connect to the Arduino via USB
 * * `sudo adduser yourusername dialout`
 * adjust the app files to match the name of your pi - orginal code points to localhost
-* * www/train-comm.js
+* * dist/app/train-comm.js
 * * * _socketAddress
 
 ## File Configurations
@@ -99,7 +101,7 @@ You may need to adjust the Comm Ports USB names to match your system.
 
 ### web socket address
 If you changed the host name and are NOT running from localhost.
-* www/train-comm.js
+* dist/app/train-comm.js
 * * _socketAddress
 
 ## Operations
