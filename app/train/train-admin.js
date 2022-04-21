@@ -1,4 +1,4 @@
-import html from 'snabby.js';
+import html from 'snabby/snabby';
 import mainView from './train-init-main-view.js';
 import emergencyControl from './train-control-emergency.js';
 

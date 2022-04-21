@@ -1,16 +1,20 @@
 "use strict";
 
+// import express from 'express';
+// // import bodyParser from 'body-parser';
+// // import https from 'https';
+// import * as api from './server-api.js';
+// import * as websocketApi from './server-websocket-api.js';
 const express = require('express');
-const bodyParser = require('body-parser');
-const https = require('https');
+// const bodyParser = require('body-parser');
+// const https = require('https');
 const api = require('./server-api.js');
 const websocketApi = require('./server-websocket-api.js');
 
 let app = express();
 websocketApi.init({});
 
-const rootPath = __dirname + '/www';
-
+const rootPath = __dirname + '/app';
 // app.use(express.static(__dirname));
 // app.use(express.static(__dirname + '/www'));
 
@@ -19,31 +23,6 @@ app.use(express.static(rootPath));
 
 // attach the api and request functions
 app = api.init({server: app, rootPath});
-
-
-
-// app.get("/", function(req, res) {
-//     console.log('server requested / ');
-//     // setUserConnection(req);
-//     res.sendFile('train.html', { root: rootPath });
-// });
-// // app.get("/train", function(req, res) {
-// //     console.log('server requested /train ');
-// //     // setUserConnection(req);
-// //     res.sendFile('train.html');
-// // });
-
-// app.get("/*html", function(req, res) {
-//     console.log('server requested some html file');
-//     // setUserConnection(req);
-//     res.sendFile('train.html');
-//         // res.send(trainHtml.view());
-// });
-
-
-
-  
-// console.log('websocketApi ', websocketApi)
 
 
 const server = app.listen(50021, function() {

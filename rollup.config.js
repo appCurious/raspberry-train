@@ -1,83 +1,53 @@
 import copy from 'rollup-plugin-copy';
-import resolve from '@rollup/plugin-node-resolve';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import json from '@rollup/plugin-json';
 import glob from 'glob';
 
-// export default {
-//   input: 'dist/www/main.js',
-//   output: {
-//     file: 'dist/wwww/bundle.js',
-//     format: 'cjs'
-//   }
-// };
-const outputWeb = 'dist/www';
-const outputServer = 'dist';
+const outputApp = 'dist/app';
+const outputDist = 'dist';
 const configs = [];
-
-/**{
-  input: ,
-  output: {
-    file: outputWeb + '/train-comm.js',
-    format: 'cjs'
-  } */
-
-// [{
-//   input: [
-//     'app/server/server.js'
-//   ] ,
-//   output: {
-//     file: outputServer + '/server.js',
-//     format: 'cjs'
-//   },
-//   plugins: [
-//     resolve(),
-//     copy({
-//       targets: [
-//         {src: 'app/assets/**/*', dest: outputWeb + '/assets'},
-//         {src: 'app/scripts/train/*.html', dest: outputWeb},
-//         {src: 'app/scripts/train/*.css', dest: outputWeb}
-//       ]
-//     })
-//   ]
-// }];
-
-// configs.push(createConfig({
-//   inputFile: 'app/scripts/train/train-comm.js',
-//   outputFile: `${outputWeb}/train-comm.js`,
-//   moduleFormat: 'cjs'
-// }));
 
 
 // read the directories for scripts -> output them in the dist/www
 const createConfigs = () => {
   // server 
-  let files = glob.sync('app/sever/*.js');
+  let files = glob.sync('app/server/*.js');
   let file = '';
-  for (file of files) {
-    configs.push(createConfig({
-      inputFile: file,
-      outputFile: `${outputServer}/${file}`
-    }));
-  }
+  // for (file of files) {
+  //   configs.push(createConfig({
+  //     inputFile: file,
+  //     outputFile: `${outputDist}/${file.replace('app/server/','')}`,
+  //     moduleFormat: 'cjs'
+  //   }));
+  // }
 
   // scripts/train
-  files = glob.sync('app/scripts/train/*.js');
+  files = glob.sync('app/train/*.js');
   for (file of files) {
     configs.push(createConfig({
       inputFile: file,
-      outputFile: `${outputWeb}/${file}`
+      outputFile: `${outputDist}/${file.replace('app/train/', 'app/')}`
     }));
   }
 };
+// esm, cjs, 
+const createConfig = ({inputFile, outputFile, moduleFormat = 'esm', minificationLevel = 'WHITESPACE_ONLY'}) => {
+  const plugins = [
+    nodeResolve(),
+    commonjs(),
+    json()
+  ];
 
-const createConfig = ({inputFile, outputFile, moduleFormat = 'cjs', minificationLevel = 'WHITESPACE_ONLY'}) => {
-  const plugins = [resolve()];
   if (!configs.length) {
     plugins.push(
       copy({
         targets: [
-          {src: 'app/assets/**/*', dest: outputWeb + '/assets'},
-          {src: 'app/scripts/train/*.html', dest: outputWeb},
-          {src: 'app/scripts/train/*.css', dest: outputWeb}
+          {src: 'app/assets/**/*', dest: outputApp + '/assets'},
+          {src: 'app/train/*.html', dest: outputApp},
+          {src: 'app/train/*.css', dest: outputApp},
+          {src: 'package.json', dest: outputDist},
+          {src: 'app/server/*.js', dest: outputDist}
         ]
       })
     );

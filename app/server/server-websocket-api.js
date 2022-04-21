@@ -1,6 +1,9 @@
+// import WebSocket from 'ws';
+// import fs from 'fs';
+// import * as dccComm  from './server-dcc-comm.js';
 const WebSocket = require('ws');
 const fs = require('fs');
-const dccComm = require('./server-dcc-comm.js');
+const dccComm  = require('./server-dcc-comm.js');
 
 function init (configs) {
 

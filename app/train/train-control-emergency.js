@@ -1,4 +1,4 @@
-import html from 'snabby.js';
+import html from 'snabby/snabby';
 import getSvgDocument from '../lib/get-svg-doc.js';
 
 let emergencyTimer;

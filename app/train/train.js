@@ -7,7 +7,7 @@
  * The api will use the model to pass back view models to update the html
  * The api will use the model to pass back control models to update the dcc controls
  */
-import html from 'snabby.js';
+import html from 'snabby/snabby';
 import mainView from './train-init-main-view.js';
 import trainView from './train-view.js';
 import emergencyControl from './train-control-emergency.js';

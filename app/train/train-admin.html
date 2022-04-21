@@ -8,12 +8,20 @@
       href="assets/favicon.png">
 	<link rel="stylesheet" href="train.css">
 
+	<!-- <script type="module" src="train-admin.js" ></script> -->
 	<script type="module" >
-		import {default as train} from './train/train-admin.js';
+		import {default as train} from './train-admin.js';
 		window.raspberryTrain = train;
 		raspberryTrain.train = raspberryTrain.init({
 			elementSelector: 'train-app'
 		});
+
+		// import { init } from './train-admin.js';
+		// window.raspberryTrain = {
+		// 	train: raspberryTrain.init({
+		// 		elementSelector: 'train-app'
+		// 	})
+		// };
 	</script>
 </head>
 <body>

@@ -1,4 +1,6 @@
 // // const gpio = require('onoff').Gpio; not needed we will use usb serial instead of io pins :)
+// import SerialPort from 'serialport';
+// import Readline from '@serialport/parser-readline';
 const SerialPort = require('serialport');
 const Readline = require('@serialport/parser-readline');
 
